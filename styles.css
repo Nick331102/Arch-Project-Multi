@@ -78,10 +78,11 @@ nav {
 /* Hero Section *********************/
 .hero {
     margin-top: 3rem;
+    position: relative;
 }
 
 .slider {
-    position: relative;
+
     overflow: hidden;
     width: 100%;
     height: 720px;
@@ -103,11 +104,14 @@ nav {
 
 .slide .content {
     position: absolute;
-    width: 600px;
+    width: 70%;
     left: -600px;
     top: 20px;
-    padding: 20px;
+    padding: 30px;
     opacity: 0;
+    background: rgba(255, 255, 255, 0.24);
+
+
 }
 
 .slide.current .content {
@@ -117,7 +121,7 @@ nav {
 }
 
 .slide__title {
-    font-size: clamp(1.5rem, 4vw, 4rem);
+    font-size: clamp(1.9rem, 4vw, 4rem);
     color: var(--very-light-grey);
 }
 
@@ -140,66 +144,49 @@ nav {
 }
 
 .slide__link:hover {
-    color: blue;
-    background: rgba(0, 0, 0, 0.575);
+    color: rgba(255, 255, 255, 0.397);
+    background: rgba(19, 23, 32, 0.363);
     cursor: pointer;
-}
-
-.buttons__container {
-    width: 300px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    height: 80px;
-    background: var(--very-light-grey);
-    justify-content: center;
-    align-items: center;
-
-}
-
-
-.button {
-    padding: 30px;
-    cursor: pointer;
-}
-
-.button.current {
-    background: var(--very-dark-blue);
-    color: var(--very-light-grey);
+    transition: 0.3s ease-in-out;
 }
 
 #next {
     position: absolute;
     top: 60%;
-    padding: 10px;
+    padding: 7px;
     font-size: 1rem;
     background: transparent;
 
     cursor: pointer;
     right: 50px;
     color: white;
-    background: rgba(0, 0, 0, 0.363);
+    background: rgba(0, 0, 0, 0);
     border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.438);
+    z-index: 20;
 }
 
 #prev {
     position: absolute;
     top: 60%;
-    padding: 10px;
+    padding: 7px;
     font-size: 1rem;
     background: transparent;
 
     cursor: pointer;
     left: 50px;
     color: white;
-    background: rgba(0, 0, 0, 0.349);
+    background: rgba(0, 0, 0, 0);
     border-radius: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.438);
+    z-index: 20;
 }
 
-.buttons button:hover {
+
+
+.buttons:hover {
     color: black;
-    background-color: white;
+
 }
 
 
@@ -231,6 +218,9 @@ nav {
     background-position: center;
     box-shadow: inset 0 0 0 1000px rgba(17, 16, 19, 0.445);
 }
+
+
+
 
 /* Welcome ******************************/
 
@@ -480,9 +470,14 @@ nav {
     background-position: center;
     padding: 20px;
     min-height: 500px;
-
     box-shadow: inset 0 0 0 1000px rgba(17, 16, 19, 0.486);
+    cursor: pointer;
 
+}
+
+.featured__image--card:hover {
+    transform: translateY(2%);
+    transition: 0.2s ease-in-out;
 }
 
 
@@ -937,7 +932,6 @@ textarea {
         cursor: pointer;
         z-index: 11;
 
-
     }
 
     .burger__line {
@@ -991,18 +985,26 @@ textarea {
 
     }
 
-
-
-
-    .overlay {
-
-        background-color: rgba(0, 0, 0, 0);
+    .clicked__overlay {
+        position: fixed;
+        background: rgba(0, 0, 0, 0.363);
+        top: 0;
+        left: 0;
         width: 100vw;
         height: 100vh;
+        opacity: 0;
+        z-index: 10;
+    }
 
-        z-index: -1;
+    .clicked__overlay.cover {
+        opacity: 1;
+        transition: 0.3s ease-in-out;
 
     }
+
+
+
+
 
 
 
@@ -1539,5 +1541,17 @@ textarea {
     .contact__form {
         flex-direction: column;
 
+    }
+}
+
+
+
+
+/* slider content */
+
+@media(max-width: 755px) {
+    .slide .content {
+        width: 100%;
+        padding: 40px 10px;
     }
 }
